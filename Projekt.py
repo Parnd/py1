@@ -59,38 +59,50 @@ while(n<9):
         root = tk.Tk()
         root.title("WORDLE")
         root.geometry("400x400")
-        for versuch in range(1, 7):
-            gewinn3 = 0
-            ben_wort = str(input("Geben Sie ein 3 Buchstabige Wort an:"))
-            tk.Entry(root)
-            Buch_list = Buch_fun(ben_wort, gew_wort)
-            print(Buch_list)
-            # create a frame to hold the boxes
-            row_frame = tk.Frame(root)
-            row_frame.pack(pady=20)
-            # create 5 empty letter boxes
-            boxes = []   # to save the labels so we can change them later
-            for i in range(0, len(ben_wort)):
-                label = tk.Label(
-                row_frame,
-                text=str(ben_wort[i]),
-                width=2,
-                height=1,
-                borderwidth=2,
-                relief="solid",
-                font=("Arial", 24))
-                label.grid(row=0, column=i, padx=3)
-                boxes.append(label)
-            if(ben_wort == gew_wort):
-                print("Das Wort ist richtig")
-                label = tk.Label(root, text = "Das Wort ist richtig")
-                label.pack()
-                gewinn3 += 1
-                n += 1
-                break
-            if (versuch == 6):
-                print(f"du hast alle deine Chancen benutzt.\n das richtige Wort ist {gew_wort}")
-                n += 1        
+            print (gew_wort)
+    while(n==3):
+        root = tk.Tk()
+        root.title("WORDLE")
+        root.geometry("400x500")
+        versuch = 1 
+        while(versuch<=6): 
+            gewinn3 = 0 
+            ben_wort = str(input("Geben Sie ein 3 Buchstabige Wort an:")) 
+            if(len(ben_wort) == 3): 
+                versuch += 1 
+                tk.Entry(root) 
+                Buch_list = Buch_fun(ben_wort, gew_wort) 
+                #print(Buch_list) 
+                # create a frame to hold the boxes 
+                row_frame = tk.Frame(root) 
+                row_frame.pack(pady=20) 
+                # create 5 empty letter boxes 
+                boxes = []   # to save the labels so we can change them later 
+                for i in range(0, len(ben_wort)): 
+                    label = tk.Label( 
+                    row_frame, 
+                    text=str(ben_wort[i]), 
+                    width=2, 
+                    height=1, 
+                    borderwidth=2, 
+                    relief="solid", 
+                    font=("Arial", 24)) 
+                    label.grid(row=0, column=i, padx=3) 
+                    boxes.append(label) 
+                if(ben_wort == gew_wort): 
+                    print("Das Wort ist richtig") 
+                    label = tk.Label(root, text = "Das Wort ist richtig") 
+                    label.pack() 
+                    gewinn3 += 1 
+                    n += 1 
+                    break 
+                if (versuch == 6): 
+                    print(f"Sie haben alle Ihre Chancen benutzt.\n das richtige Wort ist {gew_wort}") 
+                    n += 1  
+            else: 
+                print("Das ist mehr/weniger als 3 Buchstabe. Versuchen Sie noch einmal")
+
+  
     gew_wort = random.choices(lists[n],k=1)[0]
     print (gew_wort)    
     while(n==4):
@@ -171,4 +183,5 @@ while(n<9):
             if (versuch == 6):
                 print(f"du hast alle deine Chancen benutzt.\n das richtige Wort ist {gew_wort}")
                 n += 1    
+
     
